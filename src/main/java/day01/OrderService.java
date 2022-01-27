@@ -35,6 +35,11 @@ public class OrderService {
                 .collect(Collectors.toList());
     }
 
+    public List<Order> sortOrdersByStatusAndOrderDate(){
+        return orders.stream()
+                .sorted(Comparator.comparing(Order::getStatus).thenComparing(Order::getOrderDate)).toList();
+    }
+
     public boolean isAnyOrderWithProductsLessThanParam(int limit) {
         return orders
                 .stream()
