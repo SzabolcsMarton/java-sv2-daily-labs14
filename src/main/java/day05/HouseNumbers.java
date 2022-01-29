@@ -54,14 +54,21 @@ public class HouseNumbers {
     }
 
     //utcanev alapjan kerdezzuk le a paros hazszamok db-szamat.
-    //
+    public long countEvenNumbers(String streetname){
+       return streets.get(streetname).stream().filter(i -> i % 2 == 0).count();
+    }
 
     public static void main(String[] args) {
         HouseNumbers houseNumbers = new HouseNumbers();
         houseNumbers.readFile(Paths.get("src/main/resources/Streets.txt"));
 
         houseNumbers.streets.entrySet().stream().forEach(e -> System.out.println(e.getKey() + " " + e.getValue()));
+        System.out.println(houseNumbers.countEvenNumbers("Petofi"));
+        System.out.println(houseNumbers.countEvenNumbers("Kossuth"));
+
     }
+
+
 
 
 }
